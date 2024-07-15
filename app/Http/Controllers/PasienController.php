@@ -11,7 +11,7 @@ class PasienController extends Controller
      */
     public function index()
     {
-        //
+        return view('pasien_index');
     }
 
     /**
@@ -19,7 +19,7 @@ class PasienController extends Controller
      */
     public function create()
     {
-        //
+        return view('pasien_create');
     }
 
     /**
