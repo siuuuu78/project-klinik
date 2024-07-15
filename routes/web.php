@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DokterController;
 use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,3 +9,5 @@ Route::get('/', function () {
 });
 
 Route::resource('pasien', PasienController::class);
+
+Route::resource('dokter', DokterController::class);

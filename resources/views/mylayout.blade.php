@@ -8,7 +8,7 @@
             name="author"
             content="abdul rahim"
         />
-        <title>{{ env('APP_NAME') }}</title>
+        <title>{{ $title ?? ''}} :: {{ env('APP_NAME') }}</title>
 
         <link
             rel="canonical"
