@@ -6,7 +6,7 @@
         <h3>Data Pasien</h3>
         <div class="row mb-3 mt-3">
             <div class="col-md-6">
-                    <a href="/pasien/create" class="btn btn-primary btn-sm">Tambah Pasien</a>
+                <a href="/pasien/create" class="btn btn-primary btn-sm">Tambah Pasien</a>
             </div>
         </div>
         <table class="table table-striped">
@@ -29,9 +29,8 @@
                     <td>{{ $item->no_pasien }}</td>
                     <td>
                         @if($item->foto)
-                            <img src="{{ \storage::url($item->foto) }}" width="50">
+                            <img src="{{ \Storage::url($item->foto) }}" width="50px">
                         @endif
-                        {{ $item->nama }}
                     </td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->umur }}</td>

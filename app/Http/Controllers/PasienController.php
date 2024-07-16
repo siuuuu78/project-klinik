@@ -46,8 +46,8 @@ class PasienController extends Controller
     
         // Menyimpan data ke dalam database
         Pasien::create($requestData);
-    
-        return redirect('/pasien')->with('success', 'Data pasien berhasil disimpan.');
+        flash('pesan', 'Data Berhasil Disimpan')->success();
+        return redirect('/pasien');
     }
     
 

@@ -15,19 +15,22 @@ return new class extends Migration
             $table->id();
             $table->string('no_pasien');
             $table->string('nama');
-            $table->string('umur');
+            $table->integer('umur');
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->string('alamat')->nullable();
+            $table->string('foto'); // Menambahkan kolom foto
             $table->timestamps();
-
         });
     }
+    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pasiens');
+        Schema::table('pasiens', function (Blueprint $table) {
+            $table->dropColumn('foto');
+        });
     }
 };
