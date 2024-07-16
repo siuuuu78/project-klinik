@@ -1,10 +1,36 @@
-@extends('mylayout', ['title' => 'Data Pasien'])
+@extends('mylayout')
 @section('content')
 
 <div class="card">
     <div class="card-body">
-        Ini adalah halaman index pasien.
-        <a href="{{ route('pasien.create') }}">Tambah Data</a>
+        <h3>Data Pasien</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>No Pasien</th>
+                    <th>Nama</th>
+                    <th>Umur</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tgl Buat</th>
+                    <th>AKSI</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pasien as $item )
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->no_pasien }}</td>
+                    <td>{{ $item->nama }}</td>
+                    <td>{{ $item->umur }}</td>
+                    <td>{{ $item->jenis_kelamin }}</td>
+                    <td>{{ $item->created_at }}</td>
+                    <td></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        {{!! $pasien->links() !!}}
     </div>
 </div>
 
