@@ -119,6 +119,12 @@
         </nav>
 
         <main class="container">
+            @if(session()->has('pesan'))
+            <div class="alert alert-info" role="alert">
+                {{ session('pesan') }}
+            </div>
+            @endif
+            @include('flash::message')
             @yield('content')
         </main>
 

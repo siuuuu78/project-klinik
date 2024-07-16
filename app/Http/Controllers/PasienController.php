@@ -29,9 +29,18 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required'
+       $requestData = $request->validate([
+            'no_pasien' => 'required|unique:pasiens, no_pasien',
+            'nama' => 'required|min:3',
+            'umur' => 'required|numeric',
+            'jenis_kelamin' => 'required|laki-laki,perempuan',
+            'alamat' => 'nullable', //alamat boleh kosong
         ]);
+
+        $pasien = new \App\Models\Pasien(); //membuat objek kosong di variabel model
+        $pasien->fill($requestData); //mengisi var model dengan data yang sudah divalidasi requestData
+        $pasien->save();
+        return back()->with('pesan', 'Data Berhasil di slebew');
     }
 
     /**
