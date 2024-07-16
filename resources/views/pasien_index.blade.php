@@ -4,6 +4,11 @@
 <div class="card">
     <div class="card-body">
         <h3>Data Pasien</h3>
+        <div class="row mb-3 mt-3">
+            <div class="col-md-6">
+                    <a href="/pasien/create" class="btn btn-primary btn-sm">Tambah Pasien</a>
+            </div>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -30,7 +35,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{!! $pasien->links() !!}}
+        {!! $pasien->links() !!}
     </div>
 </div>
 
