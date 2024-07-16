@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use App\Models\Pasien;
 
 class PasienController extends Controller
 {
@@ -10,7 +12,7 @@ class PasienController extends Controller
      */
     public function index()
     {
-        $data['pasien'] = \APP\Models\Pasien::latest()->paginate(10);
+        $data['pasien'] = Pasien::latest()->paginate(10);
         return view('pasien_index', $data);
     }
 
