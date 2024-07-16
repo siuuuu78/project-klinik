@@ -69,7 +69,7 @@
                                 aria-labelledby="navbarDropdown"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="#">Lihat Data Pasien</a>
+                                    <a class="dropdown-item" href="/pasien">Lihat Data Pasien</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="/pasien/create"

@@ -29,19 +29,27 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-       $requestData = $request->validate([
-            'no_pasien' => 'required|unique:pasiens, no_pasien',
+        $requestData = $request->validate([
+            'no_pasien' => 'required',
             'nama' => 'required|min:3',
             'umur' => 'required|numeric',
-            'jenis_kelamin' => 'required|laki-laki,perempuan',
+            'jenis_kelamin' => 'required|in:laki-laki,perempuan',
             'alamat' => 'nullable', //alamat boleh kosong
+            'foto' => 'required|image|mimes:jpg,png,jpeg|max:5000',
         ]);
-
-        $pasien = new \App\Models\Pasien(); //membuat objek kosong di variabel model
-        $pasien->fill($requestData); //mengisi var model dengan data yang sudah divalidasi requestData
-        $pasien->save();
-        return back()->with('pesan', 'Data Berhasil di slebew');
+    
+        // Menghandle file foto
+        if ($request->hasFile('foto')) {
+            $path = $request->file('foto')->store('public/fotos');
+            $requestData['foto'] = basename($path);
+        }
+    
+        // Menyimpan data ke dalam database
+        Pasien::create($requestData);
+    
+        return redirect('/pasien')->with('success', 'Data pasien berhasil disimpan.');
     }
+    
 
     /**
      * Display the specified resource.
