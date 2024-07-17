@@ -29,7 +29,7 @@
                     <td>{{ $item->no_pasien }}</td>
                     <td>
                         @if($item->foto)
-                        <img src="{{ Storage::url($item->foto) }}" width="50">  
+                        <img src="{{ asset('/storage/fotos/' .$item->foto) }}" width="50">  
                         @endif
                                     
                     </td>
@@ -39,6 +39,15 @@
                     <td>{{ $item->created_at }}</td>
                     <td>
                         <a href="/pasien/{{ $item->id }}/edit" class="btn btn-warning btn-sm ml-2">Edit</a>
+
+                        <form action="/pasien/{{ $item->id }}" method="post" class="d-inline">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger btn-sm ml-2" onclick="return confirm('Yakin?')">
+                            Hapus
+                        </button>
+
+                        </form>
                     </td>
                 </tr>
                 @endforeach

@@ -2,16 +2,16 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Edit Data Pasien : {{ strtoupper($pasien->nama) }}</h5>
+        <h5 class="card-title">Edit Data Pasien : {{ strtroupper($pasien->nama) }}</h5>
         <form action="/pasien/{{ $pasien->id }}" method="POST" enctype="multipart/form-data">
-        @method('PUT')
+            @method('put')
         @csrf
         <div class="form-group mt-1 mb-3">
                 <label for="nama">Foto Pasien (jpg, jpeg, png)</label>
                 <input type="file" class="form-control @error('foto') is-invalid @enderror" 
                     name="foto" value="{{ old('foto') }}">
-                <span class="text-danger"> {{ $errors->first('foto') }}</span>
-                <img src="{{ \Storage::url($pasien->foto) }}" class="img-thumbnail mt-2" style="width: 100px">
+                <span class="text-danger"> {{ $errors->first('foto')  }}</span>
+                <img src="{{ asset('/storage/fotos/' .$pasien->foto) }}" width="50">
         </div>
         <div class="form-group mt-1 mb-3">
                 <label for="nama">Nama Pasien</label>
@@ -22,7 +22,7 @@
         <div class="form-group mt-1 mb-3">
                 <label for="no_pasien">Nomor Pasien</label>
                 <input type="text" class="form-control @error('no_pasien') is-invalid @enderror" id="no_pasien"
-                    name="no_pasien" value="{{ old('no_pasien') ?? $pasien->no_pasien }}">
+                    name="no_pasien" value="{{ old('no_pasien') ?? $pasien->no_pasien}}">
                 <span class="text-danger"> {{ $errors->first('nama') }}</span>
         </div>
         <div class="form-group mt-1 mb-3">
@@ -40,17 +40,17 @@
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio"  name="jenis_kelamin" id="perempuan" value="perempuan"
-                  {{ old('jenis_kelamin') ?? $pasien->jenis_kelamin === 'perempuan' ? 'checked' : ''}}>
+                  {{ old('jenis_kelamin')  ?? $pasien->jenis_kelamin === 'perempuan' ? 'checked' : ''}}>
                 <label class="form-check-label" for="perempuan">Perempuan</label>
             </div>
         </div>
         <div class="form-group mt-1 mb-3">
                 <label for="alamat">Alamat</label>
                 <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat"
-                    name="alamat" value="{{ old('alamat') ?? $pasien->alamat }}">
+                    name="alamat" value="{{ old('alamat') ?? $pasien->alamat}}">
                 <span class="text-danger"> {{ $errors->first('alamat') }}</span>
         </div>
-        <button type="submit" class="btn btn-primary">EDIT</button>
+        <button type="submit" class="btn btn-primary">SIMPAN</button>
         </form>
     </div>
 </div>

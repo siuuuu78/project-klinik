@@ -34,7 +34,7 @@ class PasienController extends Controller
             'no_pasien' => 'required',
             'nama' => 'required|min:3',
             'umur' => 'required|numeric',
-            'jenis_kelamin' => 'required|laki-laki,perempuan',
+            'jenis_kelamin' => 'required|in:laki-laki,perempuan',
             'alamat' => 'nullable', //alamat boleh kosong
             'foto' => 'required|image|mimes:jpg,png,jpeg|max:5000',
         ]);
@@ -70,27 +70,38 @@ class PasienController extends Controller
     public function update(Request $request, string $id)
     {
         $requestData = $request->validate([
-            'no_pasien' => 'required' .$id,
-            'nama' => 'required',
+            'no_pasien' => 'required',
+            'nama' => 'required|min:3',
             'umur' => 'required|numeric',
             'jenis_kelamin' => 'required|in:laki-laki,perempuan',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
             'alamat' => 'nullable',
         ]);
-
+    
         $pasien = \App\Models\Pasien::findOrFail($id);
-        $pasien->foto = $request->file('foto')->store('public');
-
-        if($request->hasFile('foto')){
+    
+        if ($request->hasFile('foto')) {
             Storage::delete($pasien->foto);
-            $pasien->foto = $request->file('foto')->store('public');
+            $pasien->foto = $request->file('foto')->store('fotos');
         }
+    
+        $pasien->fill($requestData);
+        $pasien->save();
+    
+        flash('Data Berhasil Diupdate')->success();
+        return back();
     }
-
+    
 
   
     public function destroy(string $id)
     {
-        //
+       $pasien =  \App\Models\Pasien::findOrFail($id);
+       if ($pasien->foto !=null && Storage::exists($pasien->foto)){
+                Storage::delete($pasien->foto);
+       }
+       $pasien->delete();
+        flash('Data sudah dihapus')->success();
+        return back();
     }
 }
