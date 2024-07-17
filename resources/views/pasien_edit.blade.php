@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Edit Data Pasien : {{ strtroupper($pasien->nama) }}</h5>
+        <h5 class="card-title">Edit Data Pasien : {{ strtoupper($pasien->nama) }}</h5>
         <form action="/pasien/{{ $pasien->id }}" method="POST" enctype="multipart/form-data">
             @method('put')
         @csrf
@@ -11,7 +11,7 @@
                 <input type="file" class="form-control @error('foto') is-invalid @enderror" 
                     name="foto" value="{{ old('foto') }}">
                 <span class="text-danger"> {{ $errors->first('foto')  }}</span>
-                <img src="{{ asset('/storage/fotos/' .$pasien->foto) }}" width="50">
+                <img src="{{ asset('/storage/fotos/' .$pasien->foto) }}" width="100">
         </div>
         <div class="form-group mt-1 mb-3">
                 <label for="nama">Nama Pasien</label>

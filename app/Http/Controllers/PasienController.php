@@ -41,7 +41,7 @@ class PasienController extends Controller
 
         $pasien = new \App\Models\Pasien(); //membuat objek kosong di variabel model
         $pasien->fill($requestData); //mengisi var model dengan data yang sudah divalidasi requestData
-        $pasien->foto = $request->file('foto')->store('public'); //mengisi foto dengan pathFoto
+        $pasien->foto = $request->file('foto')->store('fotos'); //mengisi foto dengan pathFoto
         $pasien->save();
         flash('Data Berhasil Disimpan')->success();
         return back();
@@ -82,7 +82,7 @@ class PasienController extends Controller
     
         if ($request->hasFile('foto')) {
             Storage::delete($pasien->foto);
-            $pasien->foto = $request->file('foto')->store('fotos');
+            $pasien->foto = $request->file('foto')->store('public');
         }
     
         $pasien->fill($requestData);
