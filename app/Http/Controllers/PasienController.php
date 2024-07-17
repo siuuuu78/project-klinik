@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Pasien;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PasienController extends Controller
 {
@@ -59,7 +60,8 @@ class PasienController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['pasien'] = \App\Models\Pasien::findOrFail($id);
+        return view('pasien_edit', $data);
     }
 
     /**
@@ -67,12 +69,26 @@ class PasienController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $requestData = $request->validate([
+            'no_pasien' => 'required' .$id,
+            'nama' => 'required',
+            'umur' => 'required|numeric',
+            'jenis_kelamin' => 'required|in:laki-laki,perempuan',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:5000',
+            'alamat' => 'nullable',
+        ]);
+
+        $pasien = \App\Models\Pasien::findOrFail($id);
+        $pasien->foto = $request->file('foto')->store('public');
+
+        if($request->hasFile('foto')){
+            Storage::delete($pasien->foto);
+            $pasien->foto = $request->file('foto')->store('public');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
+  
     public function destroy(string $id)
     {
         //

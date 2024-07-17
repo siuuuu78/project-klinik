@@ -28,13 +28,18 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->no_pasien }}</td>
                     <td>
-                        <img src="{{ Storage::url($item->foto) }}" width="50">                   
+                        @if($item->foto)
+                        <img src="{{ Storage::url($item->foto) }}" width="50">  
+                        @endif
+                                    
                     </td>
                     <td>{{ $item->nama }}</td>
                     <td>{{ $item->umur }}</td>
                     <td>{{ $item->jenis_kelamin }}</td>
                     <td>{{ $item->created_at }}</td>
-                    <td></td>
+                    <td>
+                        <a href="/pasien/{{ $item->id }}/edit" class="btn btn-warning btn-sm ml-2">Edit</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
