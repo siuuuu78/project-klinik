@@ -12,3 +12,6 @@ Route::get('/', function () {
 Route::resource('pasien', PasienController::class);
 
 Route::resource('dokter', DokterController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
