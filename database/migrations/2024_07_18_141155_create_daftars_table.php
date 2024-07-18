@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('daftars', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pasien_id');
+            $table->date('tanggal_daftar');
+            $table->string('poli');
+            $table->text('keluhan');
+            $table->text('diagnosis')->nullable();
+            $table->text('tindakan')->nullable();
             $table->timestamps();
+
         });
     }
 
