@@ -9,15 +9,18 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class DaftarFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    
+    
     public function definition(): array
     {
+        $idPasien = \App\Models\Pasien::pluck('id')->toArray();
         return [
-            //
+            'pasien_id' => $this->faker->randomElement($idPasien),
+            'tanggal_daftar' => $this->faker->date(),
+            'poli' => $this->faker->randomElement(['Umum', 'Gigi', 'Kandungan', 'Anak']),
+            'keluhan' => $this->faker->sentence(),
+            'diagnosis' => $this->faker->sentence(),
+            'tindakan' => $this->faker->sentence(),
         ];
     }
 }
