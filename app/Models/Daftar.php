@@ -18,6 +18,6 @@ class Daftar extends Model
      */
     public function pasien(): BelongsTo
     {
-        return $this->belongsTo(Pasien::class);
+        return $this->belongsTo(Pasien::class)->withDefault();
     }
 }
