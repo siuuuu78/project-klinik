@@ -29,7 +29,7 @@
                     <td>{{ $item->no_pasien }}</td>
                     <td>
                         @if($item->foto)
-                        <img src="{{ asset('/storage/fotos/' .$item->foto) }}" width="50">  
+                        <img src="{{ asset('/storage/potos/' .$item->foto) }}" width="50">  
                         @endif
                                     
                     </td>
