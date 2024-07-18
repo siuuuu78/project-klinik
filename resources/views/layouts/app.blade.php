@@ -30,7 +30,39 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                                >Beranda</a
+                            >
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Data Pasien
+                            </a>
+                            <ul
+                                class="dropdown-menu"
+                                aria-labelledby="navbarDropdown"
+                            >
+                                <li>
+                                    <a class="dropdown-item" href="/pasien">Lihat Data Pasien</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/pasien/create"
+                                        >Tambah Data Pasien</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -72,7 +104,13 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="p-5 ">
+            @if(session()->has('pesan'))
+            <div class="alert alert-info" role="alert">
+                {{ session('pesan') }}
+            </div>
+            @endif
+            @include('flash::message')
             @yield('content')
         </main>
     </div>
