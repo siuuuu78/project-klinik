@@ -1,15 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\PasienController;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Middleware\Authenticate;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('pasien', PasienController::class);
+Route::resource('pasien', PasienController::class)->middleware(Authenticate::class);
 
 Route::resource('dokter', DokterController::class);
 Auth::routes();
