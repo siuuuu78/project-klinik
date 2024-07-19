@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\DaftarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PoliController;
+use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\PasienController;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -15,6 +16,7 @@ Route::get('/', function () {
 
 Route::resource('pasien', PasienController::class)->middleware(Authenticate::class);
 Route::resource('daftar', DaftarController::class)->middleware(Authenticate::class);
+Route::resource('poli', PoliController::class)->middleware(Authenticate::class);
 
 Route::resource('dokter', DokterController::class);
 Auth::routes();

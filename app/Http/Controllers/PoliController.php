@@ -13,7 +13,8 @@ class PoliController extends Controller
      */
     public function index()
     {
-        //
+        $data['poli'] = Poli::latest()->paginate(5);
+        return view('poli_index', $data);
     }
 
     /**
@@ -21,15 +22,27 @@ class PoliController extends Controller
      */
     public function create()
     {
-        //
+        return view('poli_create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
+
+     
     public function store(StorePoliRequest $request)
     {
-        //
+        $requestData = $request->validate([
+            'nama' => 'required',
+            'biaya' => 'required',
+            'keterangan' => 'nullable',
+        ]);
+
+        $poli = new \App\Models\Poli(); //membuat objek kosong di variabel model
+        $poli->fill($requestData); //mengisi var model dengan data yang sudah divalidasi requestData
+        $poli->save();
+        flash('Data Berhasil Disimpan')->success();
+        return back();
     }
 
     /**

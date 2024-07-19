@@ -37,7 +37,8 @@ class DaftarController extends Controller
         $requestData = $request->validate([
             'tanggal_daftar' => 'required',
             'id_pasien' => 'required',
-            ''
+            'poli_id' => 'required',
+            'keluhan' => 'required',
         ]);
     }
 
