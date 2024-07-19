@@ -25,12 +25,7 @@ class DaftarController extends Controller
     public function create()
     {
         $data['listPasien'] = \App\Models\Pasien::orderBy('nama', 'asc')->get();
-        $data['listPoli'] = [
-            'Poli Umum' => 'Poli Umum',
-            'Poli Anak' => 'Poli Anak',
-            'Poli Gigi' => 'Poli Gigi',
-            'Poli Kandungan' => 'Poli Kandungan',
-        ];
+        $data['listPoli'] = \App\Models\Poli::orderBy('nama', 'asc')->get();
         return view('daftar_create', $data);
     }
 
