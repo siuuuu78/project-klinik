@@ -105,12 +105,8 @@
                       <p class="mb-0 fs-3">{{ auth()->user()->name }}</p>
                     </a>
                 
-                    <a href="#" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"
-                         class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                    <a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                         
                   </div>
                 </div>
               </li>
