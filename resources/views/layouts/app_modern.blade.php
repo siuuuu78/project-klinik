@@ -33,7 +33,7 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/home" aria-expanded="false">
+              <a class="sidebar-link {{ request()->is('home') ? 'active' : '' }}" href="/home" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -41,7 +41,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/pasien" aria-expanded="false">
+                <a class="sidebar-link {{ request()->is('pasien*' ? 'active' : '' ) }}" href="/pasien" aria-expanded="false">
                   <span>
                     <i class="ti ti-user"></i>
                   </span>
@@ -89,12 +89,7 @@
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                <i class="ti ti-bell-ringing"></i>
-                <div class="notification bg-primary rounded-circle"></div>
-              </a>
-            </li>
+            
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">

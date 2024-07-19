@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="card">
+    <div class="card-header">Data Pasien</div>
     <div class="card-body">
         <h3>Data Pasien</h3>
         <div class="row mb-3 mt-3">
