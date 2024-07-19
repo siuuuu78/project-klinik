@@ -25,14 +25,15 @@
             <span class="text-danger">{{ $errors->first('id_pasien') }}</span>
             </div>
             <div class="form-group mt-3">
-                <label for="poli">Poli</label>
-                <select name="poli" class="form-control">
+                <label for="poli_id">Poli</label>
+                <select name="poli_id" class="form-control">
                     <option value="">-- Poli --</option>
-                    @foreach ($listPoli as $key => $val)
-                        <option value="{{ $key }}" @selected(old('poli') == $key)>{{ $val }}</option>
+                    @foreach ($listPoli as $itemPoli)
+                        <option value="{{ $itemPoli->id }}" @selected(old('poli_id') == $itemPoli)>
+                            {{ $itemPoli->nama }} - {{ $itemPoli->biaya }}</option>
                     @endforeach
                 </select>
-                <span class="text-danger">{{ $errors->first('poli') }}</span>
+                <span class="text-danger">{{ $errors->first('poli_id') }}</span>
             </div>
             <div class="form-group mt-3">
                 <label for="keluhan">Keluhan Pasien</label>
