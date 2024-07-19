@@ -5,7 +5,7 @@
     <div class="card-body">
         <h3>Data Pasien</h3>
         <div class="row mb-3 mt-3">
-            <div class="col-md-6">
+            <div class="col-md-12">
                     <a href="/pasien/create" class="btn btn-primary btn-sm">Tambah Pasien</a>
             </div>
         </div>
