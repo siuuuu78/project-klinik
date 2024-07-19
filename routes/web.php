@@ -14,9 +14,11 @@ Route::get('/', function () {
 });
 
 
-Route::resource('pasien', PasienController::class)->middleware(Authenticate::class);
-Route::resource('daftar', DaftarController::class)->middleware(Authenticate::class);
-Route::resource('poli', PoliController::class)->middleware(Authenticate::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('pasien', PasienController::class);
+    Route::resource('daftar', DaftarController::class);
+    Route::resource('poli', PoliController::class);
+});
 
 Route::resource('dokter', DokterController::class);
 Auth::routes();

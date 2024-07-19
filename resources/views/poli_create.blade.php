@@ -23,7 +23,6 @@
                     name="keterangan" value="{{ old('keterangan') }}">
                 <span class="text-danger"> {{ $errors->first('keterangan') }}</span>
         </div>
-        
         <button type="submit" class="btn btn-primary">SIMPAN</button>
         </form>
     </div>
