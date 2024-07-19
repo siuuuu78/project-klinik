@@ -6,6 +6,7 @@ use App\Models\Poli;
 use App\Models\Daftar;
 use App\Http\Requests\StoreDaftarRequest;
 use App\Http\Requests\UpdateDaftarRequest;
+use Illuminate\Http\Request;
 
 class DaftarController extends Controller
 {
@@ -24,15 +25,25 @@ class DaftarController extends Controller
     public function create()
     {
         $data['listPasien'] = \App\Models\Pasien::orderBy('nama', 'asc')->get();
+        $data['listPoli'] = [
+            'Poli Umum' => 'Poli Umum',
+            'Poli Anak' => 'Poli Anak',
+            'Poli Gigi' => 'Poli Gigi',
+            'Poli Kandungan' => 'Poli Kandungan',
+        ];
         return view('daftar_create', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDaftarRequest $request)
+    public function store(Request $request)
     {
-        //
+        $requestData = $request->validate([
+            'tanggal_daftar' => 'required',
+            'id_pasien' => 'required',
+            ''
+        ]);
     }
 
     /**

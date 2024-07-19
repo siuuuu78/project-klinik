@@ -14,7 +14,7 @@
             </div>
             <div class="form-group mt-3">
                 <label for="id_pasien"> Nama Pasien</label>
-                <select name="id_pasien" class="form-control">
+                <select name="id_pasien" class="form-control select2">
                 <option value="">-- Pilih Pasien --</option>
                 @foreach ($listPasien as $item)
                     <option value="{{ $item->id }}" @selected(old('id_pasien') == $item->id)>
@@ -37,9 +37,10 @@
             <div class="form-group mt-3">
                 <label for="keluhan">Keluhan Pasien</label>
                 <textarea name="keluhan"   rows="2" class="form-control">{{ old('keluhan') }}</textarea>
-                <span class="text-danger">{{ @errors->first('keluhan') }}</span>
+                <span class="text-danger">{{ $errors->first('keluhan') }}</span>
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
 </div>
+@endsection

@@ -7,6 +7,7 @@
   <title>Modernize Free</title>
   <link rel="shortcut icon" type="image/png" href="/modern/src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="/modern/src/assets/css/styles.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -126,6 +127,13 @@
   <script src="/modern/src/assets/js/sidebarmenu.js"></script>
   <script src="/modern/src/assets/js/app.min.js"></script>
   <script src="/modern/src/assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+    $('.select2').select2();
+});
+  </script>
 </body>
 
 </html>
