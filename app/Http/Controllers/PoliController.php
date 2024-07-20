@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poli;
+use Illuminate\Http\Request;
 use App\Http\Requests\StorePoliRequest;
 use App\Http\Requests\UpdatePoliRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PoliController extends Controller
 {
@@ -56,24 +58,41 @@ class PoliController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Poli $poli)
+    public function edit(string $id)
     {
-        //
+        $data['poli'] = \App\Models\Poli::findOrFail($id);
+        return view('poli_edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePoliRequest $request, Poli $poli)
+    public function update(Request $request, string $id)
     {
-        //
+        $requestData = $request->validate([
+            'nama' => 'required',
+            'biaya' => 'required',
+            'keterangan' => 'nullable',
+        ]);
+    
+        $poli = \App\Models\Poli::findOrFail($id);
+        $poli->fill($requestData);
+        $poli->save();
+    
+        flash('Data Berhasil Diupdate')->success();
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Poli $poli)
+    public function destroy(string $id)
     {
-        //
-    }
+        $poli =  \App\Models\Poli::findOrFail($id);
+      
+        $poli->delete();
+         flash('Data sudah dihapus')->success();
+         return back();
+     }
+
 }

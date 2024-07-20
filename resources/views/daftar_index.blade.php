@@ -33,9 +33,9 @@
                     <td>{{ $item->poli }}</td>
                     <td>{{ $item->keluhan }}</td>
                     <td>
-                        <a href="/pasien/{{ $item->id }}/edit" class="btn btn-warning btn-sm ml-2">Edit</a>
+                        <a href="/daftar/{{ $item->id }}/edit" class="btn btn-warning btn-sm ml-2">Edit</a>
 
-                        <form action="/pasien/{{ $item->id }}" method="post" class="d-inline">
+                        <form action="/daftar/{{ $item->id }}" method="post" class="d-inline">
                         @csrf
                         @method('delete')
                         <button class="btn btn-danger btn-sm ml-2" onclick="return confirm('Yakin?')">
