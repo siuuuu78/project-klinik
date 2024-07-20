@@ -40,6 +40,13 @@ class DaftarController extends Controller
             'poli_id' => 'required',
             'keluhan' => 'required',
         ]);
+
+        
+        $daftar = new \App\Models\Daftar(); //membuat objek kosong di variabel model
+        $daftar->fill($requestData); //mengisi var model dengan data yang sudah divalidasi requestData
+        $daftar->save();
+        flash('Data Berhasil Disimpan')->success();
+        return back();
     }
 
     /**
