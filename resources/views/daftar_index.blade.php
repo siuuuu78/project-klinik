@@ -30,7 +30,7 @@
                     <td>{{ $item->pasien->nama }}</td>
                     <td>{{ $item->pasien->jenis_kelamin }}</td>
                     <td>{{ $item->tanggal_daftar }}</td>
-                    <td>{{ $item->poli }}</td>
+                    <td>{{ $item->poli->nama }}</td>
                     <td>{{ $item->keluhan }}</td>
                     <td>
                         <a href="/daftar/{{ $item->id }}/edit" class="btn btn-warning btn-sm ml-2">Edit</a>

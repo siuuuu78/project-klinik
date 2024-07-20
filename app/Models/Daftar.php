@@ -11,17 +11,14 @@ class Daftar extends Model
     use HasFactory;
     protected $guarded = [];
 
-    /**
-     * Get the pasien that owns the Daftar
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function pasien(): BelongsTo
     {
-        return $this->belongsTo(Pasien::class)->withDefault();
+        return $this->belongsTo(Pasien::class, 'id_pasien')->withDefault();
     }
 
-    public function poli(): BelongsTo{
-        return $this->belongsTo(Poli::class)->withDefault();
+    public function poli(): BelongsTo
+    {
+        return $this->belongsTo(Poli::class, 'poli_id')->withDefault();
     }
 }
+
