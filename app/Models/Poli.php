@@ -10,4 +10,9 @@ class Poli extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function daftar()
+    {
+        return $this->hasMany(Daftar::class);
+    }
 }

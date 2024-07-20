@@ -90,6 +90,11 @@ class PoliController extends Controller
     {
         $poli =  \App\Models\Poli::findOrFail($id);
       
+        if ($poli->daftar()->count() >= 1){
+            flash('Opss.. Data Tidak Dapat Dihapus Karena Terkait Dengan Pendaftaran!')->error();
+            return back();
+           }
+
         $poli->delete();
          flash('Data sudah dihapus')->success();
          return back();
