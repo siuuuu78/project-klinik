@@ -33,7 +33,7 @@
                     <td>{{ $item->poli->nama }}</td>
                     <td>{{ $item->keluhan }}</td>
                     <td>
-                        <a href="/daftar/{{ $item->id }}/edit" class="btn btn-warning btn-sm ml-2">Edit</a>
+                        <a href="/daftar/{{ $item->id }}" class="btn btn-info btn-sm ml-2">Detail</a>
 
                         <form action="/daftar/{{ $item->id }}" method="post" class="d-inline">
                         @csrf
