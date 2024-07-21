@@ -12,12 +12,15 @@ use App\Http\Requests\UpdateDaftarRequest;
 
 class DaftarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
-        $data['daftar'] = Daftar::latest()->paginate(10);
+        if(request()->filled('q')){
+            $data['daftar'] = \App\Models\Daftar::search(request('q'))->paginate(1);
+        }else{
+            $data['daftar'] = Daftar::latest()->paginate(10);
+        }
+        
         return view('daftar_index', $data);
     }
 
