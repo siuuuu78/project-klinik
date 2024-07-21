@@ -74,24 +74,22 @@ class DaftarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-{
-    $requestData = $request->validate([
-        'tanggal_daftar' => 'required',
-        'id_pasien' => 'required',
-        'poli_id' => 'required',
-        'keluhan' => 'required',
-    ]);
-
-    $daftar = \App\Models\Daftar::findOrFail($id);
+    public function update(Request $request, $id)
+    {
+        $requestData = $request->validate([
+            'tindakan' => 'required|string',
+            'diagnosis' => 'required|string',
+        ]);
     
-      
+        $daftar = \App\Models\Daftar::findOrFail($id);
+        
         $daftar->fill($requestData);
         $daftar->save();
     
         flash('Data Berhasil Diupdate')->success();
         return back();
-}
+    }
+    
 
     /**
      * Remove the specified resource from storage.
